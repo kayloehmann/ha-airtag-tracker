@@ -1,0 +1,12 @@
+{
+  "domain": "airtag_tracker",
+  "name": "AirTag Tracker",
+  "codeowners": ["@kayloehmann"],
+  "config_flow": true,
+  "documentation": "https://github.com/kayloehmann/ha-airtag-tracker#readme",
+  "integration_type": "device",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/kayloehmann/ha-airtag-tracker/issues",
+  "requirements": ["FindMy==0.10.2"],
+  "version": "0.1.0"
+}

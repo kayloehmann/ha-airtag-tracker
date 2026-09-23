@@ -1,0 +1,16 @@
+{
+  "title": "AirTag Tracker",
+  "config": {
+    "step": {
+      "user": {"title": "Sign in to Apple", "description": "Your password is used only for this sign-in and is not saved. This integration uses an unofficial Apple service that can stop working without notice.", "data": {"email": "Apple Account email", "password": "Password"}},
+      "two_factor_method": {"title": "Choose verification method", "description": "Choose where Apple should send the verification code.", "data": {"method": "Verification method"}},
+      "two_factor_code": {"title": "Enter verification code", "description": "Enter the six-digit code from Apple.", "data": {"code": "Verification code"}},
+      "accessory": {"title": "Import AirTag keys", "description": "Upload the FindMy.py JSON export (or decrypted plist) for this AirTag. The file contains sensitive tracking keys; keep it private.", "data": {"name": "Name override (optional)", "file": "AirTag key file"}},
+      "reauth_confirm": {"title": "Sign in to Apple again", "description": "The Apple session for {email} expired. Enter the password to reconnect; it will not be saved.", "data": {"password": "Password"}}
+    },
+    "error": {"cannot_connect": "Could not connect to Apple. Try again later.", "invalid_auth": "Apple rejected the email or password.", "invalid_code": "Apple rejected the verification code.", "invalid_accessory": "This is not a valid FindMy.py AirTag JSON or decrypted plist file."},
+    "abort": {"already_configured": "This Apple account is already configured.", "cannot_connect": "Could not connect to Apple.", "flow_expired": "The setup session expired. Start again.", "no_2fa_method": "Apple did not offer a supported verification method.", "reauth_successful": "Apple authentication was renewed."}
+  },
+  "options": {"step": {"init": {"title": "AirTag Tracker options", "description": "The integration polls less often while the AirTag is in any Home Assistant zone and more often while it is outside all zones. Faster polling increases Apple account lockout risk.", "data": {"inside_poll_interval": "Inside-zone interval (minutes)", "outside_poll_interval": "Outside-zone interval (minutes)"}}}},
+  "entity": {"sensor": {"last_seen": {"name": "Last seen"}, "report_age": {"name": "Report age"}, "accuracy": {"name": "Location accuracy"}, "battery_level": {"name": "Battery level", "state": {"full": "Full", "medium": "Medium", "low": "Low", "very_low": "Very low"}}}}
+}
