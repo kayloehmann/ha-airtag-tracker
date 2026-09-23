@@ -60,9 +60,6 @@ you to disable it temporarily.
 
 ### HACS
 
-HACS cannot access private GitHub repositories. While this repository is private, use the
-manual installation below. If the repository is later made public:
-
 1. Open HACS and select **Custom repositories**.
 2. Add `https://github.com/kayloehmann/ha-airtag-tracker` as category **Integration**.
 3. Install **AirTag Tracker** and restart Home Assistant.
