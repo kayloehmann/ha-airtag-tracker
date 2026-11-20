@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "05:43"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+    groups:
+      routine-updates:
+        patterns:
+          - "*"
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "05:43"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+    groups:
+      routine-updates:
+        patterns:
+          - "*"
