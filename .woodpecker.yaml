@@ -1,0 +1,29 @@
+when:
+  - event: [pull_request, push]
+    branch: main
+
+clone:
+  git:
+    image: woodpeckerci/plugin-git:2.12.1@sha256:b8d2401997be68ec25d62bd753fe5d30236e029fe007a5e823177e0e485ae205
+    settings:
+      depth: 0
+      partial: false
+      tags: true
+      lfs: false
+      recursive: false
+
+steps:
+  gitleaks:
+    image: ghcr.io/gitleaks/gitleaks:v8.30.1@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f
+    commands:
+      - gitleaks git --redact --log-opts="--full-history --diff-merges=first-parent HEAD" .
+
+  tests:
+    image: ghcr.io/astral-sh/uv:python3.14-bookworm-slim@sha256:7cf77f594be8042dab6daa9fe326f90962252268b4f120a7f5dccce4d947e6c1
+    commands:
+      - uv sync --frozen
+      - uv run --frozen ruff check .
+      - uv run --frozen ruff format --check .
+      - uv run --frozen pytest
+      - python -m json.tool custom_components/airtag_tracker/manifest.json >/dev/null
+      - python -m json.tool hacs.json >/dev/null
